@@ -47,7 +47,9 @@ jobs:
           name: sbom
 
       - name: Install Grype
-        uses: anchore/scan-action/download-grype@v3.6.4
+        run: |
+          curl -sSfL https://get.anchore.io/grype | sudo sh -s -- -b /usr/local/bin
+          grype --version
 
       - name: Scan for vulnerabilities
         run: |
