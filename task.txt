@@ -1,0 +1,390 @@
+================================================================================
+TASK BRIEF FOR BOB AI — PERSONAL PORTFOLIO REACT PROJECT
+Author: Saurabh (DevOps/Infrastructure Engineer, IBM)
+Purpose: Build a fully functional personal portfolio web application in React
+================================================================================
+
+────────────────────────────────────────────────────────────────────────────────
+SECTION 1 — WHO I AM (Personal & Professional Context)
+────────────────────────────────────────────────────────────────────────────────
+
+Name          : Saurabh
+Role          : DevOps / Infrastructure Engineer
+Employer      : IBM
+Team          : WES-Dev-Qe (Workload Engineering Services)
+GitHub Org    : workload-eng-services (GitHub Enterprise)
+Location      : Bengaluru, India (IST timezone)
+Domain Focus  : SAP infrastructure automation on IBM Cloud
+
+Core Technical Stack & Skills:
+  - Infrastructure as Code  : Terraform (v1.13+), IBM Terraform Provider (v1.88+)
+  - Configuration Mgmt      : Ansible (roles, playbooks, SAP-specific automation)
+  - Cloud Platform          : IBM Cloud (VPC, Schematics, Secrets Manager, VSIs,
+                              Client-to-Site VPN, Floating IPs, Public Gateways)
+  - CI/CD Pipelines         : IBM Cloud OnePipeline (Tekton-based), Travis CI,
+                              Git pre-commit hooks
+  - Security Tooling        : Mend (SCA + SAST), Checkov (Terraform/Ansible)
+  - Scripting               : Python (openpyxl, IBM Cloud SDK, Slack webhooks),
+                              Bash/Shell scripting
+  - SAP Technology          : SAP NetWeaver, SAP HANA DR, SAP MaxDB, SWPM silent
+                              install, SAP Backint Agent, SAP Snappy Backup
+  - Version Control         : Git, GitHub Enterprise, branching strategies,
+                              structured commit messages
+  - Operating Systems       : RHEL (subscription mgmt, cloud-init, SCA mode),
+                              Linux administration
+  - Other                   : SSH debugging, cloud-init scripting, IBM Cloud
+                              API/CLI, openpyxl Excel reporting
+
+Notable Projects & Achievements:
+  1. SAP NetWeaver AAS on HANA DB deployment & post-deployment validation
+     using IBM Cloud Schematics (Terraform + Ansible)
+  2. SAP HANA Disaster Recovery deployment on IBM Cloud
+  3. SAP NetWeaver + MaxDB automation using SWPM silent install (SID: ST1)
+     — Ansible roles: sapnwmxdbreq, sapnwmxdbinst
+  4. Bastion Host VSI migration across IBM Cloud VPCs using custom images
+  5. IBM Cloud root SSH breakage fix using cloud-init per-boot scripts
+  6. Python reporting suite: fetches VPC resources (VSIs, volumes, VPN servers,
+     floating IPs) across 10 IBM Cloud regions → exports to Excel + Slack summary
+  7. Mend security scanning onboarding (SCA + SAST) for multiple GHE repos
+  8. Travis CI → IBM Cloud OnePipeline (Tekton) migration with CEL triggers
+     for semver tag-based releases
+  9. Delivered a 5-day IBM Cloud Terraform training for experienced engineers
+ 10. Created new GHE repos with restricted access via WES-SAP-Access-Restricted
+     team (SAP-Ibm-Cos-Sdk, SAP-Backint-Agent, SAP-Snappy-Integration)
+ 11. GHE PAT expiry policy change communication & impact assessment
+ 12. VPN/Secrets Manager infrastructure consolidation across eu-de and eu-gb
+
+Interests outside work:
+  - Indian debt mutual funds and capital preservation strategies
+  - Ayurvedic classical texts and Sanskrit literature
+  - Travel (Bengaluru ↔ Nagpur and beyond)
+
+
+────────────────────────────────────────────────────────────────────────────────
+SECTION 2 — PROJECT OVERVIEW & GOALS
+────────────────────────────────────────────────────────────────────────────────
+
+Build a modern, professional personal portfolio website as a React application.
+The portfolio should:
+  - Serve as a professional online presence for Saurabh
+  - Showcase his DevOps/Cloud/SAP infrastructure expertise
+  - Highlight key projects and technical accomplishments
+  - Be visually impressive, polished, and memorable
+  - Be easy to maintain and extend in the future
+
+
+────────────────────────────────────────────────────────────────────────────────
+SECTION 3 — TECHNICAL REQUIREMENTS
+────────────────────────────────────────────────────────────────────────────────
+
+Framework       : React (functional components + hooks)
+Styling         : Tailwind CSS preferred; or CSS Modules if Tailwind not viable
+Animations      : Framer Motion (for page transitions and section reveals)
+Icons           : lucide-react or react-icons
+Routing         : React Router v6 (if multi-page) or single-page scroll navigation
+Build Tool      : Vite (preferred) or Create React App
+State Mgmt      : React useState / useContext (no Redux needed)
+Code Quality    : Clean, well-commented, modular component structure
+Responsiveness  : Fully responsive — mobile, tablet, desktop
+Accessibility   : Semantic HTML, ARIA labels, keyboard navigability
+Dark Mode       : Implement dark/light theme toggle (default: dark)
+
+Folder Structure (suggested):
+  src/
+    components/       ← reusable UI components (Navbar, Footer, Button, etc.)
+    sections/         ← full page sections (Hero, About, Skills, Projects, Contact)
+    data/             ← static data files (projects.js, skills.js, experience.js)
+    hooks/            ← custom hooks (useTheme, useScrollSpy, etc.)
+    assets/           ← images, icons, SVGs
+    styles/           ← global styles / Tailwind config
+
+
+────────────────────────────────────────────────────────────────────────────────
+SECTION 4 — SECTIONS / PAGES TO BUILD
+────────────────────────────────────────────────────────────────────────────────
+
+Build all of the following sections as part of a single-page scrolling layout
+(or separate routes if you prefer multi-page). Each section is described below.
+
+─────────────────────────────
+4.1  NAVBAR / HEADER
+─────────────────────────────
+  - Fixed at top, transparent initially, solid on scroll
+  - Logo or name "Saurabh" on the left
+  - Navigation links: Home, About, Skills, Projects, Experience, Contact
+  - Dark/Light mode toggle button (icon-based)
+  - Smooth scroll to sections on click
+  - Hamburger menu for mobile
+
+─────────────────────────────
+4.2  HERO SECTION
+─────────────────────────────
+  - Full-screen, visually striking
+  - Display name: Saurabh
+  - Animated role title using a typewriter effect cycling through:
+      "DevOps Engineer"
+      "IBM Cloud Infrastructure Engineer"
+      "SAP Automation Specialist"
+      "Terraform & Ansible Expert"
+  - Tagline: "Building resilient SAP infrastructure on IBM Cloud — one pipeline
+    at a time."
+  - Two CTA buttons: "View My Work" (scrolls to Projects) and
+    "Download Resume" (placeholder href="#")
+  - Subtle background: dark gradient with floating geometric shapes or
+    a grid/dot pattern (matches DevOps/tech aesthetic)
+  - Entrance animation (fade + slide up)
+
+─────────────────────────────
+4.3  ABOUT SECTION
+─────────────────────────────
+  - Brief professional bio (2–3 paragraphs) covering:
+      * Role at IBM in the WES-Dev-Qe team
+      * Focus on SAP infrastructure automation on IBM Cloud
+      * Passion for building reliable, secure, and automated systems
+  - Personal touch: mention interests (Indian classical literature / Ayurveda,
+    personal finance, travel between Bengaluru and Nagpur)
+  - A placeholder avatar/profile image area (use initials "S" in a styled circle
+    if no image is provided)
+  - Quick stats row: e.g., "3+ Years in IBM Cloud", "10+ SAP Deployments",
+    "5 CI/CD Pipelines", "2 Security Tool Integrations"
+
+─────────────────────────────
+4.4  SKILLS SECTION
+─────────────────────────────
+  Organize skills into logical categories with visual badges/cards:
+
+  Category: Cloud & Infrastructure
+    IBM Cloud (VPC, Schematics, VSI, Secrets Manager, VPN)
+    Terraform (IaC, IBM Provider, Schematics)
+    Ansible (Playbooks, Roles, SAP Automation)
+    RHEL / Linux Administration
+    cloud-init scripting
+
+  Category: CI/CD & DevOps
+    IBM Cloud OnePipeline (Tekton)
+    Travis CI
+    Git / GitHub Enterprise
+    Pre-commit Hooks
+    Mend (SCA + SAST Security Scanning)
+    Checkov (Static Analysis)
+
+  Category: SAP Technology
+    SAP NetWeaver (ABAP, AAS, HANA)
+    SAP HANA Disaster Recovery
+    SAP MaxDB
+    SWPM Silent Installation
+    SAP Backint Agent
+    SAP Snappy Backup
+
+  Category: Programming & Scripting
+    Python (openpyxl, IBM Cloud SDK, Slack Webhooks)
+    Bash / Shell Scripting
+    YAML / JSON
+
+  Category: Security & Compliance
+    Mend Unified Agent Onboarding
+    PSIRT Product Profile Mapping
+    Dependency Vulnerability Remediation
+    PAT Policy Management
+
+  Use animated progress bars OR styled tag chips — your choice.
+
+─────────────────────────────
+4.5  PROJECTS SECTION
+─────────────────────────────
+  Display as a grid of cards (3 columns desktop, 2 tablet, 1 mobile).
+  Each card: Title, short description, tech tags, and a "View Details" button
+  (can open a modal or expand inline).
+
+  Projects to include (use the data below):
+
+  1. Title: SAP NetWeaver AAS on HANA DB — IBM Cloud Deployment
+     Description: End-to-end automated deployment and post-deployment validation
+     of SAP NetWeaver Additional Application Server on HANA DB using IBM Cloud
+     Schematics, Terraform, and Ansible playbooks.
+     Tags: Terraform, Ansible, IBM Cloud, SAP NetWeaver, Schematics
+
+  2. Title: SAP HANA Disaster Recovery Setup on IBM Cloud
+     Description: Designed and deployed a HANA DR configuration on IBM Cloud VPC
+     infrastructure, including storage replication, Ansible-based configuration,
+     and validation workflows.
+     Tags: SAP HANA, DR, Ansible, IBM Cloud VPC, Terraform
+
+  3. Title: SAP NetWeaver + MaxDB Automation (SWPM Silent Install)
+     Description: Automated SAP NetWeaver installation with MaxDB using SWPM
+     silent install via inifile.params. Delivered Ansible roles: sapnwmxdbreq and
+     sapnwmxdbinst. Successfully deployed with SID ST1 on IBM Cloud VMs.
+     Tags: SAP, SWPM, Ansible, MaxDB, Automation
+
+  4. Title: IBM Cloud VPC Python Reporting Suite
+     Description: Built a Python suite using openpyxl and IBM Cloud SDK to fetch
+     VPC resources (VSIs, volumes, VPN servers, floating IPs, public gateways)
+     across all 10 IBM Cloud regions, export to formatted Excel reports, and
+     post a Slack webhook summary. Deployed with IST-scheduled cron on RHEL.
+     Tags: Python, openpyxl, IBM Cloud, Slack Webhook, RHEL, Cron
+
+  5. Title: Travis CI → IBM Cloud OnePipeline (Tekton) Migration
+     Description: Migrated automation pipeline from Travis CI to IBM Cloud
+     OnePipeline (Tekton-based). Implemented validated CEL trigger for semver
+     tag-based releases, with deferred SSH auth and per-repo file stripping logic.
+     Tags: Tekton, OnePipeline, Travis CI, CEL, CI/CD, IBM Cloud
+
+  6. Title: Mend SCA + SAST Onboarding for GHE Repositories
+     Description: Onboarded multiple GitHub Enterprise repositories to Mend
+     security scanning (SCA + SAST). Resolved dependency vulnerabilities, handled
+     setuptools.build_meta limitations, and standardized scanning across the WES
+     team.
+     Tags: Mend, SCA, SAST, Security, Python, GHE
+
+  7. Title: IBM Cloud Root SSH Fix via cloud-init
+     Description: Diagnosed and fixed IBM Cloud's platform-side disabling of root
+     SSH access on new base images. Implemented a cloud-init per-boot script to
+     sync vpcuser authorized keys to root; refactored Terraform null_resource
+     provisioners to use vpcuser + sudo escalation.
+     Tags: cloud-init, SSH, Terraform, RHEL, IBM Cloud, Security
+
+  8. Title: Bastion Host VSI Migration Across IBM Cloud VPCs
+     Description: Executed a bastion host VSI migration between VPCs using custom
+     images. Debugged cannot_start_compute errors related to NIC model mismatches
+     and Gen 1 storage, resulting in an IBM Cloud support ticket and resolution.
+     Tags: IBM Cloud VPC, VSI, Custom Image, Terraform, Debugging
+
+  9. Title: 5-Day IBM Cloud Terraform Training Delivery
+     Description: Designed and delivered a 5-day IBM Cloud Terraform training
+     series for experienced engineers unfamiliar with IBM Cloud. Pivoted from
+     slides to CLI demos and UI walkthroughs after Day 1 feedback. Covered
+     IBM Cloud Console, Terraform CLI, Schematics, and SAP deployment walkthroughs.
+     Tags: Terraform, IBM Cloud, Training, Schematics, SAP
+
+  10. Title: VPN & Secrets Manager Infrastructure Consolidation
+      Description: Investigated and executed consolidation of per-user IBM Cloud
+      infrastructure (VPC, VPN, Secrets Manager, bastion VSI) to reduce costs.
+      Produced management documentation, SVG architecture diagrams, and Mermaid
+      diagrams for eu-de and eu-gb deployments.
+      Tags: IBM Cloud, VPN, Secrets Manager, Architecture, Cost Optimization
+
+─────────────────────────────
+4.6  EXPERIENCE / TIMELINE SECTION
+─────────────────────────────
+  Display as a vertical timeline.
+
+  Entry 1:
+    Company   : IBM
+    Role      : DevOps / Infrastructure Engineer
+    Team      : WES-Dev-Qe (Workload Engineering Services)
+    Duration  : [Present]
+    Highlights:
+      - SAP infrastructure automation on IBM Cloud using Terraform & Ansible
+      - Mend SCA/SAST security scanning onboarding across GHE repositories
+      - CI/CD pipeline development (Tekton/OnePipeline, Travis CI)
+      - IBM Cloud VPC resource reporting with Python automation
+      - Delivered internal Terraform training for engineering teams
+      - Bastion host management, SSH hardening, RHEL administration
+
+─────────────────────────────
+4.7  CONTACT SECTION
+─────────────────────────────
+  - Section heading: "Let's Connect"
+  - Short text: "I'm always open to discussing infrastructure challenges,
+    SAP automation, or IBM Cloud architecture. Feel free to reach out."
+  - Contact form with fields: Name, Email, Message, Send button
+    (form submission can be a mock/console.log for now — no backend needed)
+  - Social links row (icon + label):
+      GitHub     : [placeholder — link to GitHub profile]
+      LinkedIn   : [placeholder — link to LinkedIn profile]
+      Email      : [placeholder — saurabh@example.com]
+  - Location badge: "📍 Bengaluru, India"
+
+─────────────────────────────
+4.8  FOOTER
+─────────────────────────────
+  - Simple footer: "© 2026 Saurabh. Built with React & ❤️"
+  - Back-to-top button
+
+
+────────────────────────────────────────────────────────────────────────────────
+SECTION 5 — DESIGN & AESTHETIC DIRECTION
+────────────────────────────────────────────────────────────────────────────────
+
+Aesthetic:       Dark-first, professional tech aesthetic — inspired by terminal/
+                 cloud-ops culture. Think: IBM blue accents, dark charcoal/slate
+                 backgrounds, monospace highlights for code/tech terms.
+
+Color Palette (suggested, can be adjusted):
+  Background     : #0f1117 (near-black)
+  Surface        : #1a1d27 (dark card/panel)
+  Primary Accent : #0f62fe (IBM Blue)
+  Secondary      : #42be65 (terminal green for tags/badges)
+  Text Primary   : #f4f4f4
+  Text Secondary : #a8b3cf
+  Border         : #2a2d3e
+
+Typography:
+  Headings  : A bold, geometric or technical-looking font
+              (e.g., "Space Grotesk", "IBM Plex Mono", or "Syne")
+  Body      : Clean, readable (e.g., "IBM Plex Sans" or "DM Sans")
+
+Animations:
+  - Smooth fade-in + slide-up on section entry (Framer Motion)
+  - Staggered card entrance in Skills and Projects sections
+  - Typewriter effect in Hero
+  - Hover effects on project cards (subtle scale + border glow)
+  - Navbar transition on scroll
+
+No generic "purple gradient on white" aesthetics. Keep it sharp, technical,
+and IBM-inspired — but with personality.
+
+
+────────────────────────────────────────────────────────────────────────────────
+SECTION 6 — DELIVERABLES EXPECTED
+────────────────────────────────────────────────────────────────────────────────
+
+Bob, please deliver the following:
+
+  1. Complete React project with all sections implemented
+  2. package.json with all required dependencies listed
+  3. All components modular and organized per the folder structure in Section 3
+  4. Static data separated into /src/data/ files (not hardcoded inside components)
+  5. README.md with:
+       - Project overview
+       - How to install and run locally (npm install && npm run dev)
+       - Folder structure explanation
+       - Customization guide (where to update personal info, add projects, etc.)
+  6. The project should run without errors with: npm install && npm run dev
+  7. Responsive on all screen sizes
+  8. Dark/Light theme toggle working
+
+
+────────────────────────────────────────────────────────────────────────────────
+SECTION 7 — NICE-TO-HAVE (BONUS, if time permits)
+────────────────────────────────────────────────────────────────────────────────
+
+  - Scroll progress indicator bar at top of page
+  - Particle or subtle grid animated background on Hero section
+  - Skills section with interactive hover tooltips showing more detail
+  - "Copy email" button on Contact section
+  - Subtle cursor glow effect (desktop only)
+  - SEO meta tags in index.html
+
+
+────────────────────────────────────────────────────────────────────────────────
+SECTION 8 — CONSTRAINTS & NOTES
+────────────────────────────────────────────────────────────────────────────────
+
+  - Do NOT use any paid fonts or icon libraries that require a license key
+  - All Google Fonts used must be imported via @import or <link> — no local files
+  - Social links and resume download link can be placeholder ("#") — that's fine
+  - No backend is needed; contact form can just log to console or show a
+    success toast
+  - Keep bundle size reasonable — avoid heavy libraries if a lighter alternative
+    exists
+  - Placeholder profile image is fine — use initials "S" in a styled avatar circle
+  - IBM, SAP, and other brand names used in content are for descriptive purposes
+    only; do not use their official logos without license
+
+
+────────────────────────────────────────────────────────────────────────────────
+END OF TASK BRIEF
+================================================================================
+Good luck, Bob! Build something Saurabh will be proud to share. 🚀
+================================================================================

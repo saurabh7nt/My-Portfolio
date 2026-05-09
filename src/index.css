@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-background font-sans text-textPrimary antialiased transition-colors duration-300;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Light mode overrides */
+  :root:not(.dark) body {
+    @apply bg-background-light text-textPrimary-light;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent;
+  }
+
+  .glow {
+    box-shadow: 0 0 20px rgba(15, 98, 254, 0.3);
+  }
+
+  .glow-green {
+    box-shadow: 0 0 20px rgba(66, 190, 101, 0.3);
+  }
+}
