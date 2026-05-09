@@ -8,6 +8,7 @@ const Hero = () => {
   const [isDeleting, setIsDeleting] = useState(false);
 
   const roles = [
+    'Full Stack Developer',
     'DevOps Engineer',
     'IBM Cloud Infrastructure Engineer',
     'SAP Automation Specialist',
@@ -151,7 +152,7 @@ const Hero = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1, duration: 1 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 transform"
+          className="absolute bottom-4 left-1/2 -translate-x-1/2 transform"
         >
           <motion.div
             animate={{ y: [0, 10, 0] }}
