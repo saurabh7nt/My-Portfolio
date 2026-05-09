@@ -13,7 +13,12 @@
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 10",
     "lint:fix": "eslint . --ext js,jsx --fix",
     "format": "prettier --write \"src/**/*.{js,jsx,json,css,md}\"",
-    "format:check": "prettier --check \"src/**/*.{js,jsx,json,css,md}\""
+    "format:check": "prettier --check \"src/**/*.{js,jsx,json,css,md}\"",
+    "security:sbom": "syft dir:. -o json=sbom.json -o table",
+    "security:scan": "grype sbom:sbom.json -o table",
+    "security:scan:json": "grype sbom:sbom.json -o json > grype-report.json",
+    "security:scan:sarif": "grype sbom:sbom.json -o sarif > grype-report.sarif",
+    "security:full": "npm run security:sbom && npm run security:scan"
   },
   "dependencies": {
     "framer-motion": "^11.0.0",

@@ -155,6 +155,13 @@ colors: {
 - `npm run format` - Format code with Prettier
 - `npm run format:check` - Check code formatting
 
+### Security Scanning
+- `npm run security:sbom` - Generate Software Bill of Materials (SBOM)
+- `npm run security:scan` - Scan for vulnerabilities (requires SBOM)
+- `npm run security:scan:json` - Generate JSON vulnerability report
+- `npm run security:scan:sarif` - Generate SARIF vulnerability report
+- `npm run security:full` - Run complete security scan (SBOM + vulnerability scan)
+
 ## 🌐 Deployment
 
 ### Build for Production
@@ -210,6 +217,53 @@ netlify deploy --prod
 - Client-side validation
 - Success feedback animation
 - Copy email functionality
+
+## 🔒 Security
+
+This project includes comprehensive security scanning using Syft and Grype.
+
+### Security Features
+
+- **SBOM Generation**: Automated Software Bill of Materials creation
+- **Vulnerability Scanning**: Regular dependency vulnerability checks
+- **GitHub Security Integration**: SARIF reports uploaded to GitHub Security tab
+- **Automated Workflows**: Daily security scans via GitHub Actions
+- **Dependency Review**: PR-based dependency analysis
+
+### Running Security Scans Locally
+
+**Prerequisites**: Install Syft and Grype
+```bash
+# macOS
+brew install syft grype
+
+# Linux
+curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sh -s -- -b /usr/local/bin
+curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin
+```
+
+**Run Security Scan**:
+```bash
+# Generate SBOM and scan for vulnerabilities
+npm run security:full
+
+# Or run individually
+npm run security:sbom    # Generate SBOM
+npm run security:scan    # Scan for vulnerabilities
+```
+
+**View Reports**:
+- Table format: Displayed in terminal
+- JSON format: `grype-report.json`
+- SARIF format: `grype-report.sarif` (for GitHub Security)
+
+### CI/CD Security Pipeline
+
+The project includes automated security scanning in GitHub Actions:
+- **Triggers**: Push, PR, daily schedule, manual dispatch
+- **Jobs**: SBOM generation, vulnerability scanning, dependency review
+- **Reports**: Uploaded as artifacts and to GitHub Security tab
+
 
 ## 🔧 Troubleshooting
 

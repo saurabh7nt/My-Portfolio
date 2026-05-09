@@ -25,3 +25,9 @@ docs
 *.sw?
 .vercel
 .env*.local
+
+# Security scanning reports
+sbom.json
+grype-report.json
+grype-report.sarif
+*.sbom
