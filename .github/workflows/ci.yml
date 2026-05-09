@@ -60,7 +60,7 @@ jobs:
   deploy:
       runs-on: ubuntu-latest
       needs: [code-build]        
-      if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'pull_request')
+      # if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'pull_request')
       steps:
         - name: Checkout repository
           uses: actions/checkout@v6
