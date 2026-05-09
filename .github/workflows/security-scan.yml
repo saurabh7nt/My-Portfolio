@@ -71,7 +71,8 @@ jobs:
 
       - name: Upload SARIF to GitHub Security
         uses: github/codeql-action/upload-sarif@v4
-        if: always() && hashFiles('grype-report.sarif') != ''
+        if: false  # Disabled due to SARIF format compatibility issues with SBOM scans
+        continue-on-error: true
         with:
           sarif_file: grype-report.sarif
           category: grype-scan
