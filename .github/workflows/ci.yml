@@ -44,5 +44,11 @@ jobs:
     - name: Display structure of downloaded files
       run: ls -R
     - name: Run tests
-      run: npm run test -- --run  
-       
+      run: |
+        echo "Printing workind directory:"
+        pwd
+        echo "Printing current directory contents:"
+        ls -la
+        echo "Running tests..."
+        npm run test -- --run  
+
