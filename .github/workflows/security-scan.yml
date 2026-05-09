@@ -49,14 +49,11 @@ jobs:
       - name: Install Grype
         uses: anchore/scan-action/download-grype@v3.6.4
 
-      - name: Update Grype database
-        run: grype db update
-
       - name: Scan for vulnerabilities
         run: |
-          grype sbom:sbom.spdx.json -o table
-          grype sbom:sbom.spdx.json -o json > grype-report.json
-          grype sbom:sbom.spdx.json -o sarif > grype-report.sarif
+          grype sbom:sbom.spdx.json -o table --db-update-on-start
+          grype sbom:sbom.spdx.json -o json --db-update-on-start > grype-report.json
+          grype sbom:sbom.spdx.json -o sarif --db-update-on-start > grype-report.sarif
         continue-on-error: true
 
       - name: Upload vulnerability report
