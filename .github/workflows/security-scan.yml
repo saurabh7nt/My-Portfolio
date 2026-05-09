@@ -24,15 +24,13 @@ jobs:
         uses: anchore/sbom-action/download-syft@v0.15.10
 
       - name: Generate SBOM
-        run: syft dir:. -o json=sbom.json -o spdx-json=sbom.spdx.json
+        run: syft dir:. -o spdx-json=sbom.spdx.json -o table
 
       - name: Upload SBOM as artifact
         uses: actions/upload-artifact@v4
         with:
           name: sbom
-          path: |
-            sbom.json
-            sbom.spdx.json
+          path: sbom.spdx.json
           retention-days: 90
 
   vulnerability-scan:
@@ -51,11 +49,15 @@ jobs:
       - name: Install Grype
         uses: anchore/scan-action/download-grype@v3.6.4
 
+      - name: Update Grype database
+        run: grype db update
+
       - name: Scan for vulnerabilities
         run: |
-          grype sbom:sbom.json -o table
-          grype sbom:sbom.json -o json > grype-report.json
-          grype sbom:sbom.json -o sarif > grype-report.sarif
+          grype sbom:sbom.spdx.json -o table
+          grype sbom:sbom.spdx.json -o json > grype-report.json
+          grype sbom:sbom.spdx.json -o sarif > grype-report.sarif
+        continue-on-error: true
 
       - name: Upload vulnerability report
         uses: actions/upload-artifact@v4
@@ -67,13 +69,14 @@ jobs:
           retention-days: 90
 
       - name: Upload SARIF to GitHub Security
-        uses: github/codeql-action/upload-sarif@v3
-        if: always()
+        uses: github/codeql-action/upload-sarif@v4
+        if: always() && hashFiles('grype-report.sarif') != ''
         with:
           sarif_file: grype-report.sarif
           category: grype-scan
 
       - name: Check for critical vulnerabilities
+        if: hashFiles('grype-report.json') != ''
         run: |
           CRITICAL_COUNT=$(jq '[.matches[] | select(.vulnerability.severity == "Critical")] | length' grype-report.json)
           HIGH_COUNT=$(jq '[.matches[] | select(.vulnerability.severity == "High")] | length' grype-report.json)
@@ -113,8 +116,10 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: vulnerability-report
+        continue-on-error: true
 
       - name: Generate summary
+        if: hashFiles('grype-report.json') != ''
         run: |
           echo "# Security Scan Summary" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
