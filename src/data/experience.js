@@ -1,9 +1,9 @@
 export const experienceData = [
   {
     id: 1,
-    company: 'IBM',
-    role: 'DevOps / Infrastructure Engineer',
-    team: 'WES-Dev-Qe (Workload Engineering Services)',
+    company: 'Infobell IT Solutions',
+    role: 'DevOps / Cloud Platform Engineer',
+    team: 'Enterprise SAP automation on IBM Cloud',
     duration: 'May 2023 – Present',
     location: 'Bengaluru, India',
     highlights: [

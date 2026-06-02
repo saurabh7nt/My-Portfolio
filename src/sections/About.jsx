@@ -82,11 +82,11 @@ const About = () => {
                 <p>
                   I'm a{' '}
                   <span className="font-semibold text-primary">
-                    DevOps and Infrastructure Engineer
+                    DevOps and Cloud Platform Engineer
                   </span>{' '}
-                  at IBM, working with the{' '}
-                  <span className="font-semibold text-primary">WES-Dev-Qe</span> (Workload
-                  Engineering Services) team. My primary focus is on{' '}
+                  at{' '}
+                  <span className="font-semibold text-primary">Infobell IT Solutions</span>. My
+                  primary focus is on{' '}
                   <span className="font-semibold text-secondary">
                     SAP infrastructure automation
                   </span>{' '}
@@ -99,16 +99,6 @@ const About = () => {
                   reduce deployment times. From orchestrating complex SAP HANA deployments to
                   implementing CI/CD pipelines with Tekton, I thrive on solving infrastructure
                   challenges at scale.
-                </p>
-
-                <p>
-                  Beyond the terminal and cloud consoles, I have a deep interest in{' '}
-                  <span className="font-semibold text-secondary">Indian classical literature</span>,
-                  particularly Ayurvedic texts and Sanskrit works. I also enjoy exploring{' '}
-                  <span className="font-semibold text-secondary">personal finance strategies</span>,
-                  especially debt mutual funds and capital preservation. When I'm not automating
-                  infrastructure, you'll find me traveling between{' '}
-                  <span className="font-semibold text-primary">Bengaluru and Nagpur</span>.
                 </p>
               </div>
 

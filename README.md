@@ -4,7 +4,7 @@ A modern, professional personal portfolio website built with React, showcasing D
 
 ## 🚀 Overview
 
-This portfolio website serves as a professional online presence for Saurabh, a DevOps/Infrastructure Engineer at IBM, specializing in SAP automation on IBM Cloud. The site features a dark-first design with smooth animations, responsive layouts, and an intuitive user experience.
+This portfolio website serves as a professional online presence for Saurabh, a DevOps / Cloud Platform Engineer specializing in SAP automation on IBM Cloud. The site features a dark-first design with smooth animations, responsive layouts, and an intuitive user experience.
 
 ## ✨ Features
 
@@ -294,8 +294,8 @@ This project is open source and available for personal use.
 ## 👤 Author
 
 **Saurabh**
-- Role: DevOps / Infrastructure Engineer
-- Company: IBM
+- Role: DevOps / Cloud Platform Engineer
+- Company: Infobell IT Solutions
 - Location: Bengaluru, India
 
 ---

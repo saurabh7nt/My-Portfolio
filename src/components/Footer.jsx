@@ -30,7 +30,9 @@ const Footer = () => {
 
         {/* Additional Info */}
         <div className="mt-6 border-t border-border pt-6 text-center">
-          <p className="text-xs text-textSecondary">DevOps Engineer @ IBM | Bengaluru, India</p>
+          <p className="text-xs text-textSecondary">
+            DevOps & Cloud Platform Engineer | Bengaluru, India
+          </p>
         </div>
       </div>
     </footer>
