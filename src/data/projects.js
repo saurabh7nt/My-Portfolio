@@ -21,7 +21,7 @@ export const projects = [
     id: 3,
     title: 'SAP NetWeaver + MaxDB Automation (SWPM Silent Install)',
     description:
-      'Automated SAP NetWeaver installation with MaxDB using SWPM silent install via inifile.params. Delivered Ansible roles: sapnwmxdbreq and sapnwmxdbinst. Successfully deployed with SID ST1 on IBM Cloud VMs.',
+      'Automated SAP NetWeaver installation with MaxDB using SWPM silent install via inifile.params. Delivered Ansible roles: sapnwmxdbreq and sapnwmxdbinst. Successfully deployed with a defined SID on IBM Cloud VMs.',
     tags: ['SAP', 'SWPM', 'Ansible', 'MaxDB', 'Automation'],
     details:
       'Created reusable Ansible roles for SAP MaxDB deployments, significantly reducing deployment time and human error.',
@@ -48,7 +48,7 @@ export const projects = [
     id: 6,
     title: 'Mend SCA + SAST Onboarding for GHE Repositories',
     description:
-      'Onboarded multiple GitHub Enterprise repositories to Mend security scanning (SCA + SAST). Resolved dependency vulnerabilities, handled setuptools.build_meta limitations, and standardized scanning across the WES team.',
+      'Onboarded multiple GitHub Enterprise repositories to Mend security scanning (SCA + SAST). Resolved dependency vulnerabilities, handled setuptools.build_meta limitations, and standardized scanning organization-wide.',
     tags: ['Mend', 'SCA', 'SAST', 'Security', 'Python', 'GHE'],
     details:
       'Enhanced security posture by implementing comprehensive vulnerability scanning and remediation workflows across the organization.',
@@ -66,7 +66,7 @@ export const projects = [
     id: 8,
     title: 'Bastion Host VSI Migration Across IBM Cloud VPCs',
     description:
-      'Executed a bastion host VSI migration between VPCs using custom images. Debugged cannot_start_compute errors related to NIC model mismatches and Gen 1 storage, resulting in an IBM Cloud support ticket and resolution.',
+      'Executed a bastion host VSI migration between VPCs using custom images. Debugged cannot_start_compute errors related to NIC model mismatches and Gen 1 storage, resolving the underlying NIC/storage compatibility issues to complete the migration.',
     tags: ['IBM Cloud VPC', 'VSI', 'Custom Image', 'Terraform', 'Debugging'],
     details:
       'Successfully migrated critical infrastructure components while troubleshooting complex platform-level issues.',
@@ -84,10 +84,37 @@ export const projects = [
     id: 10,
     title: 'VPN & Secrets Manager Infrastructure Consolidation',
     description:
-      'Investigated and executed consolidation of per-user IBM Cloud infrastructure (VPC, VPN, Secrets Manager, bastion VSI) to reduce costs. Produced management documentation, SVG architecture diagrams, and Mermaid diagrams for eu-de and eu-gb deployments.',
+      'Investigated and executed consolidation of per-user IBM Cloud infrastructure (VPC, VPN, Secrets Manager, bastion VSI) to reduce costs. Produced management documentation, SVG architecture diagrams, and Mermaid diagrams across multiple regions.',
     tags: ['IBM Cloud', 'VPN', 'Secrets Manager', 'Architecture', 'Cost Optimization'],
     details:
       'Achieved significant cost savings through infrastructure consolidation while maintaining security and accessibility requirements.',
+  },
+  {
+    id: 11,
+    title: 'EPYC Advisory — CI/CD & Cloud Deployment',
+    description:
+      'Built and configured Jenkins CI/CD pipeline stages (build and deploy) for an advisory-platform application running on AWS EC2; automated artifact (JAR) deployment and service restart, and resolved pipeline/deployment failures.',
+    tags: ['Jenkins', 'CI/CD', 'AWS', 'EC2', 'Deployment'],
+    details: 'Hands-on AWS deployment automation supporting reliable releases.',
+  },
+  {
+    id: 12,
+    title: 'Aarogya Mandi — eHealth Platform (Capstone)',
+    description:
+      'Contributed to a Practo-like healthcare platform built end-to-end from development to cloud deployment (~25 microservices, 400+ REST APIs). Personally owned 6 microservices across the medicine/e-pharmacy domain (Product, Inventory, Discount, User, Payment) plus the Medicine React frontend — covering Spring Boot backend, containerization (Docker/Kubernetes), and AWS infrastructure via Terraform with Jenkins CI/CD.',
+    tags: ['Spring Boot', 'Microservices', 'React', 'Docker', 'Kubernetes', 'AWS', 'Terraform', 'Jenkins'],
+    details:
+      'Full-stack + DevOps ownership of a complete business vertical within a large microservices system.',
+  },
+  {
+    id: 13,
+    title: 'Spring Boot Microservices Platform (Personal Project)',
+    description:
+      'Solo-built microservices system — 5–6 Spring Boot services with an API gateway, service discovery, Kafka-based asynchronous communication, and circuit breakers for resilience. Containerized with Docker (per-service Dockerfiles + docker-compose with PostgreSQL) and deployed on a local Kubernetes (KIND) cluster with manifests and ingress.',
+    tags: ['Spring Boot', 'Microservices', 'Kafka', 'Docker', 'Kubernetes', 'Java'],
+    details:
+      'Demonstrates end-to-end ownership from application code to cloud-native deployment; built to deepen backend + container-orchestration skills.',
+    link: 'https://github.com/saurabh7nt/Spring-Boot-Microservice',
   },
 ];
 

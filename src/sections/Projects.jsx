@@ -2,7 +2,7 @@ import { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { projects } from '../data/projects';
-import { ExternalLink, X } from 'lucide-react';
+import { ExternalLink, X, Github } from 'lucide-react';
 
 const Projects = () => {
   const ref = useRef(null);
@@ -178,6 +178,19 @@ const Projects = () => {
                     ))}
                   </div>
                 </div>
+
+                {/* Repository Link */}
+                {selectedProject.link && (
+                  <a
+                    href={selectedProject.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 rounded-lg border border-border bg-background px-4 py-2 font-semibold text-primary transition-all duration-300 hover:border-primary hover:bg-primary/10"
+                  >
+                    <Github className="h-5 w-5" />
+                    View on GitHub
+                  </a>
+                )}
               </div>
             </motion.div>
           </motion.div>
