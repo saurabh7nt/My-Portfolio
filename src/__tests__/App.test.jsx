@@ -23,11 +23,12 @@ describe('App Component', () => {
     );
     
     // Check for section headings
-    expect(screen.getByText(/DevOps Engineer/i)).toBeInTheDocument();
+    expect(screen.getByText(/DevOps & Cloud Platform Engineer/i)).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: /About Me/i })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: /Technical Skills/i })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: /Featured Projects/i })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: /Work Experience/i })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /Certifications/i })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: /Let's Connect/i })).toBeInTheDocument();
   });
 
