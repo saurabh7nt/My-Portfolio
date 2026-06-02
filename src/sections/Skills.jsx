@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { skillsData } from '../data/skills';
-import { Cloud, GitBranch, Database, Code, Shield } from 'lucide-react';
+import { Cloud, GitBranch, Database, Code, Shield, Server } from 'lucide-react';
 
 const Skills = () => {
   const ref = useRef(null);
@@ -14,6 +14,7 @@ const Skills = () => {
     'SAP Technology': Database,
     'Programming & Scripting': Code,
     'Security & Compliance': Shield,
+    'Backend (Working Knowledge)': Server,
   };
 
   const containerVariants = {

@@ -3,6 +3,7 @@ export const skillsData = [
     category: 'Cloud & Infrastructure',
     skills: [
       'IBM Cloud (VPC, Schematics, VSI, Secrets Manager, VPN)',
+      'AWS (EC2, S3, VPC, IAM, EKS)',
       'Terraform (IaC, IBM Provider, Schematics)',
       'Ansible (Playbooks, Roles, SAP Automation)',
       'RHEL / Linux Administration',
@@ -12,12 +13,19 @@ export const skillsData = [
   {
     category: 'CI/CD & DevOps',
     skills: [
+      'Docker',
+      'Kubernetes',
       'IBM Cloud OnePipeline (Tekton)',
+      'GitHub Actions',
+      'Jenkins',
       'Travis CI',
       'Git / GitHub Enterprise',
-      'Pre-commit Hooks',
+      'Terratest',
+      'tfsec',
+      'Syft & Grype (SBOM / Vulnerability Scanning)',
       'Mend (SCA + SAST Security Scanning)',
       'Checkov (Static Analysis)',
+      'Pre-commit Hooks',
     ],
   },
   {
@@ -38,6 +46,10 @@ export const skillsData = [
       'Bash / Shell Scripting',
       'YAML / JSON',
     ],
+  },
+  {
+    category: 'Backend (Working Knowledge)',
+    skills: ['Spring Boot', 'REST APIs', 'Microservices', 'Kafka', 'PostgreSQL'],
   },
   {
     category: 'Security & Compliance',
