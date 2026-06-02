@@ -1,38 +1,16 @@
 import { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
-import { Mail, MapPin, Github, Linkedin, Send, CheckCircle, Copy } from 'lucide-react';
+import { Mail, MapPin, Github, Linkedin, CheckCircle, Copy } from 'lucide-react';
 
 const Contact = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
-  });
-  const [isSubmitted, setIsSubmitted] = useState(false);
   const [isCopied, setIsCopied] = useState(false);
 
-  const email = 'saurabh@example.com';
-
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Mock form submission
-    console.log('Form submitted:', formData);
-    setIsSubmitted(true);
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({ name: '', email: '', message: '' });
-    }, 3000);
-  };
+  const email = 'saurabhtajne07@gmail.com';
+  const linkedinUrl = 'https://www.linkedin.com/in/saurabh-tajane-8686801b8/';
+  const githubUrl = 'https://github.com/saurabh7nt';
 
   const copyEmail = () => {
     navigator.clipboard.writeText(email);
@@ -83,195 +61,102 @@ const Contact = () => {
             </p>
           </motion.div>
 
-          <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-2">
-            {/* Contact Info */}
-            <motion.div variants={itemVariants} className="space-y-8">
-              {/* Location */}
-              <div className="flex items-start gap-4">
-                <div className="rounded-lg bg-primary/10 p-3">
-                  <MapPin className="h-6 w-6 text-primary" />
-                </div>
-                <div>
-                  <h3 className="mb-1 text-lg font-semibold text-textPrimary">Location</h3>
-                  <p className="text-textSecondary">📍 Bengaluru, India</p>
-                </div>
+          <div className="mx-auto max-w-2xl">
+            <motion.div
+              variants={itemVariants}
+              className="rounded-2xl border border-border bg-surface p-8 sm:p-10"
+            >
+              {/* Primary actions: Email + LinkedIn */}
+              <div className="flex flex-col gap-4 sm:flex-row">
+                <a
+                  href={`mailto:${email}`}
+                  className="glow group flex flex-1 items-center justify-center gap-3 rounded-xl bg-primary px-6 py-4 font-semibold text-white transition-all duration-300 hover:bg-primary/90"
+                  aria-label="Send an email to Saurabh"
+                >
+                  <Mail className="h-5 w-5" />
+                  Email Me
+                </a>
+                <a
+                  href={linkedinUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex flex-1 items-center justify-center gap-3 rounded-xl border border-primary px-6 py-4 font-semibold text-primary transition-all duration-300 hover:bg-primary/10"
+                  aria-label="Connect with Saurabh on LinkedIn"
+                >
+                  <Linkedin className="h-5 w-5" />
+                  Connect on LinkedIn
+                </a>
               </div>
 
-              {/* Email */}
-              <div className="flex items-start gap-4">
-                <div className="rounded-lg bg-primary/10 p-3">
-                  <Mail className="h-6 w-6 text-primary" />
-                </div>
-                <div className="flex-1">
-                  <h3 className="mb-1 text-lg font-semibold text-textPrimary">Email</h3>
-                  <div className="flex items-center gap-2">
-                    <a
-                      href={`mailto:${email}`}
-                      className="text-textSecondary transition-colors hover:text-primary"
-                    >
-                      {email}
-                    </a>
-                    <motion.button
-                      onClick={copyEmail}
-                      className="rounded p-1.5 transition-colors hover:bg-surface"
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.9 }}
-                      title="Copy email"
-                    >
-                      {isCopied ? (
-                        <CheckCircle className="h-4 w-4 text-secondary" />
-                      ) : (
-                        <Copy className="h-4 w-4 text-textSecondary" />
-                      )}
-                    </motion.button>
-                  </div>
-                </div>
+              {/* Email address with copy */}
+              <div className="mt-6 flex items-center justify-center gap-2 text-sm">
+                <a
+                  href={`mailto:${email}`}
+                  className="text-textSecondary transition-colors hover:text-primary"
+                >
+                  {email}
+                </a>
+                <motion.button
+                  onClick={copyEmail}
+                  className="rounded p-1.5 transition-colors hover:bg-background"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  aria-label="Copy email address"
+                  title="Copy email"
+                >
+                  {isCopied ? (
+                    <CheckCircle className="h-4 w-4 text-secondary" />
+                  ) : (
+                    <Copy className="h-4 w-4 text-textSecondary" />
+                  )}
+                </motion.button>
               </div>
 
-              {/* Social Links */}
-              <div>
-                <h3 className="mb-4 text-lg font-semibold text-textPrimary">Connect on Social</h3>
-                <div className="flex gap-4">
-                  <motion.a
-                    href="#"
-                    className="group rounded-lg border border-border bg-surface p-3 transition-all duration-300 hover:border-primary hover:bg-primary/10"
-                    whileHover={{ y: -5 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <Github className="h-6 w-6 text-textSecondary transition-colors group-hover:text-primary" />
-                  </motion.a>
-                  <motion.a
-                    href="#"
-                    className="group rounded-lg border border-border bg-surface p-3 transition-all duration-300 hover:border-primary hover:bg-primary/10"
-                    whileHover={{ y: -5 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <Linkedin className="h-6 w-6 text-textSecondary transition-colors group-hover:text-primary" />
-                  </motion.a>
+              {/* Secondary info: Location + GitHub */}
+              <div className="mt-8 flex flex-col items-center justify-between gap-4 border-t border-border pt-6 sm:flex-row">
+                <div className="flex items-center gap-2 text-sm text-textSecondary">
+                  <MapPin className="h-4 w-4 text-primary" />
+                  Bengaluru, India
                 </div>
-              </div>
-
-              {/* Additional Info Card */}
-              <div className="rounded-xl border border-border bg-surface p-6">
-                <h3 className="mb-3 text-lg font-semibold text-textPrimary">Areas of Interest</h3>
-                <ul className="space-y-2 text-sm text-textSecondary">
-                  <li className="flex items-center gap-2">
-                    <div className="h-1.5 w-1.5 rounded-full bg-primary"></div>
-                    Cloud Infrastructure & Automation
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <div className="h-1.5 w-1.5 rounded-full bg-primary"></div>
-                    SAP Deployment Solutions
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <div className="h-1.5 w-1.5 rounded-full bg-primary"></div>
-                    CI/CD Pipeline Architecture
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <div className="h-1.5 w-1.5 rounded-full bg-primary"></div>
-                    DevOps Best Practices
-                  </li>
-                </ul>
+                <motion.a
+                  href={githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center gap-2 rounded-lg border border-border bg-background px-4 py-2 text-sm text-textSecondary transition-all duration-300 hover:border-primary hover:text-primary"
+                  whileHover={{ y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                  aria-label="GitHub profile"
+                >
+                  <Github className="h-5 w-5 transition-colors group-hover:text-primary" />
+                  GitHub
+                </motion.a>
               </div>
             </motion.div>
 
-            {/* Contact Form */}
-            <motion.div variants={itemVariants}>
-              <form
-                onSubmit={handleSubmit}
-                className="space-y-6 rounded-xl border border-border bg-surface p-8"
-              >
-                {/* Name Input */}
-                <div>
-                  <label
-                    htmlFor="name"
-                    className="mb-2 block text-sm font-semibold text-textPrimary"
-                  >
-                    Name
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    className="w-full rounded-lg border border-border bg-background px-4 py-3 text-textPrimary placeholder-textSecondary transition-colors focus:border-primary focus:outline-none"
-                    placeholder="Your name"
-                  />
-                </div>
-
-                {/* Email Input */}
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="mb-2 block text-sm font-semibold text-textPrimary"
-                  >
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="w-full rounded-lg border border-border bg-background px-4 py-3 text-textPrimary placeholder-textSecondary transition-colors focus:border-primary focus:outline-none"
-                    placeholder="your.email@example.com"
-                  />
-                </div>
-
-                {/* Message Input */}
-                <div>
-                  <label
-                    htmlFor="message"
-                    className="mb-2 block text-sm font-semibold text-textPrimary"
-                  >
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    rows="5"
-                    className="w-full resize-none rounded-lg border border-border bg-background px-4 py-3 text-textPrimary placeholder-textSecondary transition-colors focus:border-primary focus:outline-none"
-                    placeholder="Your message..."
-                  />
-                </div>
-
-                {/* Submit Button */}
-                <motion.button
-                  type="submit"
-                  className="glow flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-6 py-3 font-semibold text-white transition-all duration-300 hover:bg-primary/90"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  disabled={isSubmitted}
-                >
-                  {isSubmitted ? (
-                    <>
-                      <CheckCircle className="h-5 w-5" />
-                      Message Sent!
-                    </>
-                  ) : (
-                    <>
-                      <Send className="h-5 w-5" />
-                      Send Message
-                    </>
-                  )}
-                </motion.button>
-
-                {isSubmitted && (
-                  <motion.p
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="text-center text-sm text-secondary"
-                  >
-                    Thank you for reaching out! I'll get back to you soon.
-                  </motion.p>
-                )}
-              </form>
+            {/* Areas of Interest */}
+            <motion.div
+              variants={itemVariants}
+              className="mt-8 rounded-xl border border-border bg-surface p-6"
+            >
+              <h3 className="mb-3 text-lg font-semibold text-textPrimary">Areas of Interest</h3>
+              <ul className="grid gap-2 text-sm text-textSecondary sm:grid-cols-2">
+                <li className="flex items-center gap-2">
+                  <div className="h-1.5 w-1.5 rounded-full bg-primary"></div>
+                  Cloud Infrastructure & Automation
+                </li>
+                <li className="flex items-center gap-2">
+                  <div className="h-1.5 w-1.5 rounded-full bg-primary"></div>
+                  SAP Deployment Solutions
+                </li>
+                <li className="flex items-center gap-2">
+                  <div className="h-1.5 w-1.5 rounded-full bg-primary"></div>
+                  CI/CD Pipeline Architecture
+                </li>
+                <li className="flex items-center gap-2">
+                  <div className="h-1.5 w-1.5 rounded-full bg-primary"></div>
+                  DevOps Best Practices
+                </li>
+              </ul>
             </motion.div>
           </div>
         </motion.div>
@@ -281,5 +166,3 @@ const Contact = () => {
 };
 
 export default Contact;
-
-

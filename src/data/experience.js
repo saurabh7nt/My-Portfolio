@@ -4,7 +4,7 @@ export const experienceData = [
     company: 'IBM',
     role: 'DevOps / Infrastructure Engineer',
     team: 'WES-Dev-Qe (Workload Engineering Services)',
-    duration: 'Present',
+    duration: 'May 2023 – Present',
     location: 'Bengaluru, India',
     highlights: [
       'SAP infrastructure automation on IBM Cloud using Terraform & Ansible',

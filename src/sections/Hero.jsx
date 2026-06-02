@@ -8,11 +8,11 @@ const Hero = () => {
   const [isDeleting, setIsDeleting] = useState(false);
 
   const roles = [
-    'Full Stack Developer',
     'DevOps Engineer',
+    'Cloud Platform Engineer',
     'IBM Cloud Infrastructure Engineer',
-    'SAP Automation Specialist',
-    'Terraform & Ansible Expert',
+    'Terraform & Ansible Practitioner',
+    'SAP Automation Engineer',
   ];
 
   useEffect(() => {
@@ -136,7 +136,10 @@ const Hero = () => {
             </motion.button>
 
             <motion.a
-              href="#"
+              href="/Saurabh_Tajane_Resume.pdf"
+              download
+              target="_blank"
+              rel="noopener noreferrer"
               className="group flex items-center gap-2 rounded-lg border border-border bg-surface px-8 py-4 font-semibold text-textPrimary transition-all duration-300 hover:bg-border"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
